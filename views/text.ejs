@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+  <title></title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+  <style type="text/css">
+    body {
+       background: url("../img/back.jpg") no-repeat center center!important;
+    }
+    /* CSS Document */
+
+
+.art{width: 900px;background: white;margin: 0 auto;padding: 10px;border-radius: 4px;box-shadow: 0 0 5px #00eff7}
+.title{padding-bottom:10px;border-bottom:1px solid #dcb9b9;text-align: center;font-size: 16px;color: red;font-weight: bold;margin-bottom: 10px}
+.text{text-indent: 2em;line-height:30px;padding-bottom: 50px}
+.title p{color: #3e3b3b;font-weight: normal;margin-top: 8px}
+
+
+</style>
+</head>
+<body>
+ <%include header %>
+   <div class="art">
+     <div class="title">
+      <%=article.title %>   
+      <p>作者：<%=article.author %> &nbsp; &nbsp; &nbsp;发表时间：<%=article.time %> </p>
+     </div>
+     <div class="text">
+        <%=article.text %>  
+     </div>
+   </div>
+
+   <div id="qq">
+  <p>有什么新鲜事想告诉大家?</p>
+  <div class="message" contentEditable='true'></div>
+
+  <div class="But">
+    <img src="img/bba_thumb.gif" class='bq'/>
+    <span class='submit'>发表</span>
+    
+  </div>
+</div>
+<!--qq end-->
+
+
+</body>
+</html>

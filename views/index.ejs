@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+
+<link href="css/jpage.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	.jpage-panel{height: 30px}
+
+#c_right .lanmubox{width:260px;height:180px;border:1px solid #ccc;margin-top:5px;background:#fff;}
+.lanmubox .hd{width:260px;height:30px;border-bottom:1px solid #ddd;}
+.lanmubox .hd ul li{float:left;width:85px;height:30px;line-height:30px;text-align:center; cursor:pointer; }
+.lanmubox .hd .hd_3{width:88px;}
+.lanmubox .hd ul li.on{height:30px;background:#fff;border:1px solid #ccc;border-bottom:2px solid #fff;border-top:1px solid #f00;}
+.lanmubox .bd{width:260px;height:145px;zoom:1;overflow:hidden;}
+.lanmubox .bd ul li{width:230px;padding-left:25px;height:29px;line-height:29px;}
+.lanmubox .bd ul li:hover{padding-left:35px;transition: all 0.5s;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;}
+.lanmubox .bd ul li a{color:#444;font-size:14px;}
+.lanmubox .bd ul li a:hover{color:#f00;}
+
+.lanmubox .hd ul li.on {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #fff;
+    border-top: 1px solid #f00;
+}
+#c_right .s_about p{margin-top:5px}
+</style>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<script type="text/javascript">
+	$(function(){
+
+		  $(".wz").each(function(i){
+            var num=i%3;
+  
+             switch(num){
+             	case 0:
+             	  $(".wz").eq(i).find("img").attr("src","img/show_1.jpg");
+             	  break;
+             	case 1:
+             	 $(".wz").eq(i).find("img").attr("src","img/show_2.jpg");
+             	 break;
+             	case 2:
+             	 $(".wz").eq(i).find("img").attr("src","img/show_3.jpg");
+             	 break;
+             }
+           	  
+        })
+
+	})
+
+
+</script>
+<body>
+    
+    <%include header %>
+     
+    <!--content start-->
+    <div id="content">
+         <!--left-->
+         <div class="left" id="c_left">
+           <div class="s_tuijian">
+           <h2>文章<span>推荐</span></h2>
+           </div>
+          <div class="content_text">
+ 
+          <div id="jpage" class="jpage box">
+            <div class="box jpage-panel" data-type="panel"></div> 
+           <div class="list box text-shadow" data-type="content">	
+           <% for(var i=0;i < art.length; i++){ %>
+             <div class="wz list-item box">
+            <h3><a href="#"><%= art[i].title %></a></h3>
+             <dl>
+               <dt><img src="" width="200"  height="123" alt=""></dt>
+               <dd>
+                 <p class="dd_text_1"><%= art[i].text %></p>
+               <p class="dd_text_2">
+               <span class="left author">作者: <%= art[i].author %></span><span class="left sj">发表时间:<%= art[i].time %></span>
+               <span class="left yd"><a href="/article/<%=art[i].id %>" title="阅读全文">阅读全文</a>
+               </span>
+                <div class="clear"></div>
+               </p>
+               </dd>
+               <div class="clear"></div>
+             </dl>
+            </div>
+         
+             <% } %> 
+
+             </div>
+
+             </div>
+                  
+           </div>
+         </div>
+         <!--left end-->
+         <!--right-->
+         <div class="right" id="c_right">
+          <div class="s_about">
+          <h2>关于开发者</h2>
+           <img src="img/head.png" width="230" height="230" alt="博主">
+           <p>网站开发者：我的征途是星辰大海</p>
+           <p>职业：web前</p>
+           <p>QQ：1021690020</p>
+           <p>
+           
+           </p><div class="clear"></div>
+           <p></p>
+          </div>
+          <!--栏目分类-->
+           <div class="lanmubox">
+              <div class="hd">
+               <ul><li>最新文章</li></ul>
+              </div>
+              <div class="bd">
+                <ul>
+                  <% for(var i=0;i < art.length; i++){ %>
+					<li><a href="/article/<%=art[i].id %>"><%= art[i].text %></a></li>
+					
+				 <% } %> 
+				</ul>
+               
+                 
+                
+              </div>
+           </div>
+           <!--end-->
+           
+         </div>
+         <!--right end-->
+         <div class="clear"></div>
+    </div>
+   
+
+   <script type="text/javascript" src="js/jpage.min.js"></script>
+<script type="text/javascript">
+$('document').ready(function(){
+	$('#jpage').jpage({
+		effect: 'random' //'', 'crossfade', 'bricks', 'slideLeft', 'slideRight', 'random'
+	});
+});
+</script>
+</body>
+</html>
